@@ -44,8 +44,8 @@ class Player {
         style.height = "20px";
         style.backgroundColor = "red";
         style.position = "absolute";
-        style.top = "200px"
-        style.left = "250px"
+        style.top = "20px"
+        style.left = "20px"
     
         gameContainer.appendChild(div);
     
@@ -57,7 +57,7 @@ class Player {
       playerIsOutsideOfContainer(){
           const newHeight = parseInt(this.div.style.top);
           const newRight = parseInt(this.div.style.left);
-          if(newHeight === 0 || newHeight === 400 || newRight === 0 || newRight === 490){
+          if(newHeight === 0 || newHeight === 400 || newRight === 0 || newRight === 400){
               alert('Game Over')
           }
       }

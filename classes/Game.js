@@ -9,7 +9,7 @@ class Game{
         const gameContainer = document.getElementById('gameContainer')
         gameContainer.style.backgroundColor = "#AED6F1";
         gameContainer.style.height = "400px";
-        gameContainer.style.width = "500px";
+        gameContainer.style.width = "400px";
         document.body.appendChild(gameContainer);
         return gameContainer;
     }
