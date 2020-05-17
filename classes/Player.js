@@ -6,50 +6,47 @@ class Player {
     }
     move(){
         document.addEventListener('keyup', (event) => {
+            const oldTop = parseInt(this.div.style.top);
+            const oldRight = parseInt(this.div.style.left);
+            const stopMooving = this.playerIsOutsideOfContainer();
             switch(event.keyCode){
                 case 40 : //down
-                const oldTop = parseInt(this.div.style.top);
-                this.div.style.top = `${oldTop + 20}px`;
-                console.log('arrow down', this.div.style.top)
+                if(stopMooving === false){
+                    this.div.style.top = `${oldTop + 20}px`;
+                }
                 break;
 
-            
                 case 38: //up
-                const oldBotom = parseInt(this.div.style.top);
-                this.div.style.top = `${oldBotom - 20}px`;
-                console.log('arrow up', this.div.style.top)
+                if(stopMooving === false){
+                    this.div.style.top = `${oldTop - 20}px`;
+                }
                 break;
 
-                
                 case 39: //right
-                const oldLeft = parseInt(this.div.style.left);
-                this.div.style.left = `${oldLeft + 20}px`;
-                console.log('arrow right', this.div.style.left)
+                if(stopMooving === false){
+                    this.div.style.left = `${oldRight + 20}px`;
+                }
                 break;
 
                 case 37: //left
-                const oldRight = parseInt(this.div.style.left);
-                this.div.style.left = `${oldRight - 20}px`;
-                console.log('arrow left', this.div.style.left)
+                if(stopMooving === false){
+                    this.div.style.left = `${oldRight - 20}px`;
+                }
                 break;
             }
-            this.playerIsOutsideOfContainer();
         })
     }
     static display() {
-        const gameContainer = document.getElementById('gameContainer')
         const div = document.createElement('div');
         const { style } = div;
         style.width = "20px";
         style.height = "20px";
         style.backgroundColor = "red";
         style.position = "absolute";
-        style.top = "20px"
-        style.left = "20px"
+        style.top = "50px";
+        style.left = "50px";
     
-        gameContainer.appendChild(div);
-    
-    
+        document.body.appendChild(div);
     
         return div;
     
@@ -57,8 +54,10 @@ class Player {
       playerIsOutsideOfContainer(){
           const newHeight = parseInt(this.div.style.top);
           const newRight = parseInt(this.div.style.left);
-          if(newHeight === 0 || newHeight === 400 || newRight === 0 || newRight === 400){
-              alert('Game Over')
+          if(newHeight === 30 || newHeight === 430 || newRight === 30 || newRight === 430){
+              return true;
+          }else{
+              return false;
           }
       }
 }

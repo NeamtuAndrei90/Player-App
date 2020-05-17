@@ -1,28 +1,22 @@
 class Obstacle{
-    constructor(gameContainer) {
-        this.gameContainer = gameContainer;
-        this.width = 20;
-        this.height = 20;
-        this.color = "green";
+    constructor(){
+     this.div = Obstacle.display();
     }
-    showObstacle(){
-        const obstacleDOM = this.createObstacle();
-        const mapWidth = this.gameContainer.getBoundingClientRect().width;
-        const mapHeight = this.gameContainer.getBoundingClientRect().height;
-        this.x = Math.floor(Math.random() * mapWidth);
-        this.y = Math.floor(Math.random() * mapHeight);
-        obstacleDOM.style.position = "absolute";
-        obstacleDOM.style.top = `${this.x}px`;
-        obstacleDOM.style.left = `${this.y}px`;
-        this.obstacleDOM = obstacleDOM;
-        this.gameContainer.appendChild(obstacleDOM);
+    static display(){
+     const gameContainer = document.getElementById('gameContainer')
+     const div = document.createElement('div');
+     const { style } = div;
+     style.width = "20px";
+     style.height = "20px";
+     style.backgroundColor = "blue";
+     style.position = "absolute";
+     style.top = `${Math.floor(Math.random()*19)*20}px`;
+     style.left = `${Math.floor(Math.random()*18)*20}px`;
+ 
+     gameContainer.appendChild(div);
+ 
+ 
+ 
+     return div;
     }
-    createObstacle() {
-        const div = document.createElement('div');
-        div.style.backgroundColor = this.color;
-        div.style.width = `${this.width}px`;
-        div.style.height = `${this.height}px`;
-        
-        return div;
-    }
-}
+ }
